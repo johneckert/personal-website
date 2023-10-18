@@ -6,7 +6,7 @@ function setup() {
   
   svg = SVG().addTo('#lava-lamp').size(window.innerWidth, window.innerHeight)
   
-  gradientFire = svg.gradient('linear', function(add) {
+  blobGradient = svg.gradient('linear', function(add) {
     add.stop(0, '#c536F0')
     add.stop(0.8, '#48154B')
   }).from(0.5, 1).to(0, 0)
@@ -51,35 +51,35 @@ function draw() {
 
 class Lava {
   constructor(group) {
-    this.pos = createVector(random(width), floor(random(window.innerHeight)))
-    this.vel = createVector(0, 0)
-    this.temp = 1
+    this.position = createVector(random(width), floor(random(window.innerHeight)));
+    this.velocity = createVector(0, 0);
     
-    this.size = random(50, 200)
-    this.sizeTime = random(1000)
+    this.initialSize = random(50, 200);
+    this.wobble = random(1000);
     
-    this.el = svg
-      .ellipse(this.size, this.size)
-      .center(this.pos.x, this.pos.y)
-      .fill(gradientFire)
-    group.add(this.el)
+    this.element = svg
+      .ellipse(this.initialSize, this.initialSize)
+      .center(this.position.x, this.position.y)
+      .fill(blobGradient);
+    group.add(this.element);
   }
   
   update() {
-    let a = this.sizeTime, as = 0.2
-    let sizeX = (1 + sin(a) * as) * this.size
-    let sizeY = (1 + sin(a + PI) * as) * this.size
+    let scale = 0.2
+    let sizeX = (1 + sin(this.wobble) * scale) * this.initialSize
+    let sizeY = (1 + sin(this.wobble + PI) * scale) * this.initialSize
     
-    let acc = createVector(0, map(this.pos.y, 0, 400, 1, -1) * 0.1 / this.size)
-    this.vel.add(acc)
-    this.vel.limit(0.5)
-    this.pos.add(this.vel)
+    let acceleration = createVector(0, map(this.position.y, 0, window.innerHeight, 1, -1) * 0.1 / this.initialSize)
+    this.velocity.add(acceleration)
+    this.velocity.limit(0.5)
+    this.position.add(this.velocity)
     
-    this.sizeTime += abs(this.vel.mag()) * 0.05 + 0.005
+    // update wobble based on magnitude of velocity
+    this.wobble += abs(this.velocity.mag()) * 0.05 + 0.005
     
-    this.el
+    this.element
       .size(sizeX, sizeY)
-      .center(this.pos.x, this.pos.y)
+      .center(this.position.x, this.position.y)
   }
 }
 
