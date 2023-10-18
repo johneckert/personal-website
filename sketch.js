@@ -6,10 +6,13 @@ function setup() {
   
   svg = SVG().addTo('#lava-lamp').size(window.innerWidth, window.innerHeight)
   
-  blobGradient = svg.gradient('linear', function(add) {
-    add.stop(0, '#c536F0')
-    add.stop(0.8, '#48154B')
-  }).from(0.5, 1).to(0, 0)
+  blobGradient = svg.gradient('radial', function(add) {
+    add.stop(0, '#FFFFFF')
+    add.stop(0.1, '#c536F0')
+    add.stop(0.4, '#a12bc4')
+    add.stop(0.8, '#772091')
+    add.stop(1, '#2b0a3d')
+  })
   
   let group = makeFilter()
 
@@ -26,20 +29,14 @@ function makeFilter() {
   filter.add(svg.element('feGaussianBlur').attr({
     in: "SourceGraphic", 
     stdDeviation: 10,
-    result: "blur",
+    result: "background-blur",
   }))
-  
+
   filter.add(svg.element('feColorMatrix').attr({
-    in: "blur",
+    in: "background-blur",
     type: "matrix",
-    values: "1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 19 -9",
+    values: "1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 20 -5",
     result: "goo",
-  }))
-  
-  filter.add(svg.element('feComposite').attr({
-    in: "SourceGraphic",
-    in2: "goo",
-    operator: "atop",
   }))
   
   return svg.group().attr('filter', 'url(#goo)')
