@@ -6,15 +6,199 @@ html, body {
 
 canvas {
   display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
 }
 
-#name {
-  color: #FFFFFF;
+#content {
+  position: relative;
+  height: 100vh;
+  width: 100%;
+  overflow: scroll;
+  z-index: 900;
+  scroll-snap-type: y mandatory;
+}
+
+section {
+  width: 100%;
+  height: 100%;
+  margin-bottom: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   font-family: 'Open Sans', sans-serif;
-  z-index: 1000;
-  position: absolute;
-  top: 30%;
-  left: 40%;
+  scroll-snap-align: start;
+}
+
+.half-screen {
+  width: 50%;
+  align-self: normal;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#title {
+  color: #FFFFFF;
+}
+
+#about {
+  color: #FFFFFF;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+img#glamour-shot {
+  width: 50%;
+}
+
+#about .half-screen:last-child {
+  padding: 4rem;
+  background-image: linear-gradient(to right, rgba(86,86,86,0) 0%, rgba(86,86,86,1) 1%);
+}
+
+#work {
+  color: #FFFFFF;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#skills {
+  margin-top: 7rem;
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: rgba(86,86,86,1); 
+}
+
+#skills ul li{
+  display: inline;
+  padding: 1rem;
+}
+
+#job-info {
+  margin-bottom: 5rem;
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: rgba(86,86,86,1); 
+
+}
+
+#job-info ul {
+  list-style: none;
+  padding: 0;
+}
+
+#job-info ul li {
+  margin-bottom: 20px;
+}
+
+#job-info ul li h4 {
+  margin: 0;
+  font-weight: 500;
+}
+
+#job-info a {
+  color: #FFFFFF;
+  text-decoration: none;
+}
+
+#job-info a:hover {
+  color: rgb(54, 197, 240);
+}
+
+#job-info ul li p {
+  margin: 0;
+  font-weight: 300;
+}
+
+#job-info .role {
+  font-weight: 300;
+}
+
+#project-info {
+  margin-bottom: 5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#project-info h2 {
+  color: #FFFFFF;
+}
+
+#project-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-self: normal;
+}
+
+.project-card {
+  width: 20%;
+  height: 80%;
+  margin: 3rem;
+  padding: 1rem;
+  background-color: #565656;
+  border-radius: 2% 2%;
+  border: solid 1px #868686;
+  filter: drop-shadow(0 0 0.75rem #565656);
+}
+
+.project-card .card-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%
+}
+
+.project-card .card-header .header-text {
+  width: 50%;
+}
+
+.project-card .card-header .header-text h2 {
+  font-size: 6rem;
+}
+
+.project-card .card-header .header-image {
+  width: 50%;
+}
+
+.project-card .card-body {
+  display: flex;
+  flex-direction: column;
+  color: #FFFFFF;
+  
+}
+
+.project-card .card-body > a {
+  text-align: end;
+  padding-right: 2rem;
+  padding-top: 1rem;
+}
+
+.project-card h1 {
+  color: #FFFFFF;
+  font-weight: 300;
+  margin-bottom: 2rem;
+}
+
+.project-card a {
+  color: #FFFFFF;
+  text-decoration: none;
+}
+
+.project-card a:hover {
+  color: rgb(54, 197, 240);
+  text-decoration: underline;
 }
 
 #links {
@@ -39,10 +223,14 @@ canvas {
 
 h1 {
   font-weight: 400;
+  font-size: 2rem;
+  margin: 0;
+  padding: 0;
 }
 
 h2 {
   font-weight: 300;
+  font-size: 1.5rem;
   font-style: italic;
 }
 
@@ -59,5 +247,6 @@ svg {
   pointer-events: none;
   width: 100%;
   height: 100%;
-  background: linear-gradient(110.2deg, rgb(54, 197, 240) 8.2%, rgb(74, 21, 75) 92.4%);
+  /* background: linear-gradient(110.2deg, rgb(54, 197, 240) 8.2%, rgb(74, 21, 75) 92.4%); */
+  background: linear-gradient(110.2deg, rgb(55, 213, 214) 5%, rgb(0,151,151) 80%);
 }
