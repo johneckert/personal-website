@@ -160,8 +160,9 @@ article#headshot img {
 }
 
 article#about {
-  padding: 2rem;
-  background: #565656;
+  padding: 2rem 8rem;
+  background-color: rgba(86,86,86,1); 
+  clip-path: polygon(8% 0, 100% 0, 92% 100%, 0 100%);
 }
 
 article#about h2 {
@@ -174,7 +175,7 @@ article#skills {
   display: flex;
   flex-direction: column;
   align-items: center;
-  background: rgba(86,86,86,1); 
+  background-color: rgba(86,86,86,1); 
 }
 
 article#skills ul {
@@ -198,13 +199,13 @@ article#skills ul li:not(:first-child)::before {
 
 article#job-info {
   margin-bottom: 5rem;
-  padding: 2rem;
-  width: 50%;
+  padding: 4rem;
   display: flex;
   flex-direction: column;
   align-items: center;
   width: 100%;
-  background: rgba(86,86,86,1); 
+  background-color: rgba(86,86,86,1); 
+  clip-path: polygon(0 20%, 100% 0, 100% 80%, 0 100%);
 
 }
 
