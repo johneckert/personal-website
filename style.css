@@ -25,21 +25,33 @@ svg {
 }
 
 h1 {
-  font-weight: 400;
-  font-size: 2rem;
+  font-size: 5rem;
   margin: 0;
   padding: 0;
+  font-family: 'Shrikhand', serif;
 }
 
 h2 {
   font-weight: 300;
   font-size: 1.5rem;
-  font-style: italic;
+  font-family: 'Open Sans', sans-serif;
+  margin: 0;
+}
+
+h3 {
+  font-size: 2.5rem;
+  font-family: 'Shrikhand', serif;
+  margin: 0;
 }
 
 h4 {
-  font-weight: 500;
   margin-bottom: 0;
+}
+
+h5 {
+  color: #FFFFFF;
+  font-weight: 300;
+  margin-bottom: 2rem;
 }
 
 a {
@@ -47,13 +59,12 @@ a {
   text-decoration: none;
 }
 
-a:hover, a:hover > i {
+a:hover, a:hover * {
   color: rgb(54, 197, 240);
 }
 
 #links {
   color: #FFFFFF;
-  font-family: 'Open Sans', sans-serif;
   z-index: 1000;
   position: absolute;
   top: 5%;
@@ -110,7 +121,8 @@ section {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  font-family: 'Open Sans', sans-serif;
+  font-family: 'Raleway', sans-serif;
+  font-weight: 100;
   scroll-snap-align: start;
   color: #FFFFFF;
 }
@@ -148,13 +160,12 @@ article#headshot img {
 }
 
 article#about {
-  padding: 1rem 2rem 2rem 2rem;
+  padding: 2rem;
   background: #565656;
 }
 
 article#about h2 {
   text-align: center;
-  padding-bottom: 2rem;
 }
 
 article#skills {
@@ -170,43 +181,71 @@ article#skills ul {
   padding: 0;
 }
 
-article#skills ul li{
+article#skills ul li {
   display: inline;
   padding: 1rem;
+}
+
+article#skills ul li:not(:first-child)::before {
+  font-family: "Font Awesome 5 Free";
+  content: "\f0e7";
+  display: inline-block;
+  padding-right: 1rem;
+  vertical-align: middle;
+  font-weight: 900;
 }
 
 
 article#job-info {
   margin-bottom: 5rem;
+  padding: 2rem;
   width: 50%;
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 100%;
   background: rgba(86,86,86,1); 
 
 }
 
-article#job-info ul {
+article#job-info > ul {
   list-style: none;
   padding: 0;
 }
 
-article#job-info ul li {
+article#job-info .job {
   margin-bottom: 20px;
 }
 
-article#job-info a {
-  color: #FFFFFF;
-  text-decoration: none;
-}
-
-article#job-info ul li p {
+article#job-info .job p {
   margin: 0;
   font-weight: 300;
 }
 
+article#job-info .job h4 {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding-bottom: 0.3rem;
+}
+
 article#job-info .role {
-  font-weight: 300;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding-bottom: 0.6rem;
+}
+
+article#job-info .role-title {
+  font-weight: 100;
+  font-style: italic;
+  width: 50%;
+}
+
+article#job-info .date {
+  font-weight: 100;
+  width: 50%;
+  text-align: end;
 }
 
 article#personal-projects {
@@ -237,16 +276,6 @@ article#personal-projects {
 
 .header-text, .header-image {
   width: 50%;
-}
-
-.project-card h1 {
-  color: #FFFFFF;
-  font-weight: 300;
-  margin-bottom: 2rem;
-}
-
-.project-card h2 {
-  font-size: 6rem;
 }
 
 .card-body {
