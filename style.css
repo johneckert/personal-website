@@ -51,7 +51,7 @@ h4 {
 h5 {
   color: #FFFFFF;
   font-weight: 300;
-  margin-bottom: 2rem;
+  font-size: 3rem;
 }
 
 a {
@@ -128,11 +128,11 @@ section {
 
 section#bio {
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: space-around;
 }
 
 section#work {
-  justify-content: space-between;
+  justify-content: space-around;
 }
 
 section#project-info {
@@ -141,7 +141,7 @@ section#project-info {
 
 article#headshot {
   width: 25vw;
-  margin-right: 4rem;
+  margin-left: 12%;
 }
 
 article#headshot::before {
@@ -162,7 +162,8 @@ article#about {
   padding: 2rem 8rem;
   background-color: rgba(86,86,86,1); 
   clip-path: polygon(8% 0, 100% 0, 92% 100%, 0 100%);
-  margin-right: 2rem;
+  margin-right: 8%;
+  width: 30%;
 }
 
 article#about h2 {
@@ -209,21 +210,21 @@ article#job-info {
 
 }
 
-article#job-info > ul {
+article#job-info > ul, article#personal-projects > ul {
   list-style: none;
   padding: 0;
 }
 
-article#job-info .job {
+article#personal-projects .project, article#job-info .job {
   margin-bottom: 20px;
 }
 
-article#job-info .job p {
+article#personal-projects .project p, article#job-info .job p {
   margin: 0;
   font-weight: 300;
 }
 
-article#job-info .job h4 {
+article#personal-projects .project h4, article#job-info .job h4 {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -250,48 +251,30 @@ article#job-info .date {
 }
 
 article#personal-projects {
-  margin-top: 10rem;
-  margin-bottom: 10rem;
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 100%;
+  padding: 6rem 0;
+  background-color: rgba(86,86,86,1); 
+  clip-path: polygon(0 0, 100% 20%, 100% 100%, 0 80%);
 }
 
-.project-card {
-  width: 20%;
-  height: 80%;
-  margin: 3rem;
-  padding: 1rem;
-  background-color: #565656;
-  border-radius: 2% 2%;
-  border: solid 1px #868686;
-  filter: drop-shadow(0 0 0.75rem #565656);
-}
-
-.project-card .card-header {
+article#personal-projects .project .header {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
-  width: 100%
 }
 
-.header-text, .header-image {
-  width: 50%;
+article#personal-projects .project .header img {
+  width: 3rem;
+  height: 3rem;
+  margin-right: 1rem;
 }
 
-.card-body {
-  display: flex;
-  flex-direction: column;
-  color: #FFFFFF;
-  
+article#personal-projects .project p {
+  padding-bottom: 0.5rem;
 }
 
-.card-body > a {
-  text-align: end;
-  padding-right: 2rem;
-  padding-top: 1rem;
-}
-
-.project-card a:hover {
+article#personal-projects .project .description a {
   text-decoration: underline;
 }
