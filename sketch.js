@@ -17,7 +17,7 @@ function setup() {
   let group = makeFilter()
 
   for (let i = 0; i < Math.ceil(window.innerHeight / 20); i++) {
-    blobs.push(new Lava(group))
+    blobs.push(new Goop(group))
   }
   
   group.fill('#ff9f60')
@@ -46,7 +46,7 @@ function draw() {
   for (let blob of blobs) blob.update()
 }
 
-class Lava {
+class Goop {
   constructor(group) {
     this.position = createVector(random(width), floor(random(window.innerHeight)));
     this.velocity = createVector(0, 0);
