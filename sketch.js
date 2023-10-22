@@ -1,11 +1,25 @@
 let blobs = [];
 let svg, blobGradient;
+let width, height;
+
+function isMobile() {
+  const regex = /Mobi|Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i;
+  return regex.test(navigator.userAgent);
+}
+
+if (isMobile()) {
+  width = window.screen.width;
+  height = window.screen.height;
+} else {
+  width = window.innerWidth;
+  height = window.innerHeight;
+}
 
 function setup() {
   pixelDensity(1);
-  createCanvas(window.innerWidth, window.innerHeight);
+  createCanvas(width,height);
   
-  svg = SVG().addTo('#lava-lamp').size(window.innerWidth, window.innerHeight);
+  svg = SVG().addTo('#lava-lamp').size(width, height);
   
   blobGradient = svg.gradient('radial', function(add) {
     add.stop(0, '#FFFFFF')
@@ -17,7 +31,7 @@ function setup() {
   
   let group = makeFilter();
 
-  for (let i = 0; i < Math.ceil(window.innerHeight / 20); i++) {
+  for (let i = 0; i < Math.ceil(height / 20); i++) {
     blobs.push(new Goop(group));
   }
 }
@@ -46,7 +60,7 @@ function draw() {
 
 class Goop {
   constructor(group) {
-    this.position = createVector(random(width), floor(random(window.innerHeight)));
+    this.position = createVector(random(width), floor(random(height)));
     this.velocity = createVector(0, 0);
     
     this.initialSize = random(50, 200);
@@ -64,7 +78,7 @@ class Goop {
     let sizeX = (1 + sin(this.wobble) * scale) * this.initialSize;
     let sizeY = (1 + sin(this.wobble + PI) * scale) * this.initialSize;
     
-    let acceleration = createVector(0, map(this.position.y, 0, window.innerHeight, 1, -1) * 0.1 / this.initialSize);
+    let acceleration = createVector(0, map(this.position.y, 0, height, 1, -1) * 0.1 / this.initialSize);
     this.velocity.add(acceleration);
     this.velocity.limit(0.5);
     this.position.add(this.velocity);
