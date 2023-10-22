@@ -2,6 +2,7 @@ let blobs = [];
 let svg, blobGradient;
 
 function setup() {
+  pixelDensity(1);
   createCanvas(window.innerWidth, window.innerHeight);
   
   svg = SVG().addTo('#lava-lamp').size(window.innerWidth, window.innerHeight);
