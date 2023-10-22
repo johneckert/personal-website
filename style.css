@@ -110,6 +110,7 @@ a:hover, a:hover * {
   width: 100vw;
   overflow: scroll;
   z-index: 900;
+  -webkit-scroll-snap-type: y mandatory;
   scroll-snap-type: y mandatory;
 }
 
@@ -123,6 +124,7 @@ section {
   align-items: center;
   font-family: 'Raleway', sans-serif;
   font-weight: 100;
+  -webkit-scroll-snap-align: start;
   scroll-snap-align: start;
   color: #FFFFFF;
 }

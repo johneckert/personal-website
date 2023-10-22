@@ -1,13 +1,10 @@
 let blobs = [];
-let svg, blobGradient;
-let width, height;
+let svg, blobGradient, width, height;
 
-function isMobile() {
-  const regex = /Mobi|Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i;
-  return regex.test(navigator.userAgent);
-}
+let isMobile = /Mobi|Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+let isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
 
-if (isMobile()) {
+if (isMobile || isSafari) {
   width = window.screen.width;
   height = window.screen.height;
 } else {
