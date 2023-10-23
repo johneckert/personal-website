@@ -15,7 +15,7 @@
     <script src="https://kit.fontawesome.com/940f4d9432.js" crossorigin="anonymous"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;1,300&family=Raleway:ital,wght@0,100;0,200;0,300;0,700;1,100;1,200;1,300;1,700&family=Shrikhand&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cabin&family=Shrikhand&display=swap" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="style.css">
     <meta charset="utf-8" />
 
@@ -37,95 +37,111 @@
       </div>
       <div id="content">
         <section id="title">
-          <article id="hero">
             <h1>John Eckert</h1>
             <h2>Software Engineer</h2>
-          </article>
         </section>
         <section id="bio">
-            <article id="headshot">
-              <img src="images/glamour-shot.jpg" alt="John Eckert and Winston the cat" />
+          <article class="page-card">
+            <article>
+              <div id="head-shot"></div>
+              <div id="about-text">
+                <h3>About Me</h3>
+                <p>Hey there!</p>
+                <p>I'm a Software Engineer based in Brooklyn, NY. I have a knack for turning complex challenges into creative solutions.</p>                  
+                <p>Collaboration is my superpower. Through it, I empower my teammates to achieve measurable results.</p>
+                <p>I get excited about opportunities to use my dev powers for good and contribute to positive social impact.</p>
+              </div>
             </article>
-            <article id="about">
-            <h3>About Me</h3>
-            <p>Hey there! I'm a Software Engineer based in Brooklyn, NY. I have a knack for turning complex challenges into creative solutions.</p> 
-            <p>Collaboration is my superpower. Through it, I empower my teammates to achieve measurable results.</p>
-            <p>I get excited about opportunities to use my dev powers for good and contribute to positive social impact.</p>
           </article>
         </section>
         <section id="work">
-          <article id="skills">
-            <ul>
-              <li>Javascript</li>
-              <li>React</li>
-              <li>Typescript</li>
-              <li>GraphQL</li>
-              <li>Jest</li>
-              <li>Cypress</li>
-              <li>HTML</li>
-              <li>CSS</li>
-              <li>Ruby</li>
-              <li>Ruby on Rails</li>
-            </ul>
-          </article>
-          <article id="job-info"> 
-            <h3>Work</h3>
-            <ul>
-              <li class="job">
+          <article class="page-card">
+            <article>
+              <h3>Work</h3>
+              <div class="card-container">
                 <a href="https://www.praxislabs.co" target="_blank">
-                  <h4>Praxis Labs</h4>
+                  <div class="card work-card">
+                    <img src="./images/company-logos/praxis-labs.png" alt="Praxis Labs"></img>
+                    <div>
+                      <h5>Software Engineer</h5>
+                      <p class="sub-text">2022 - 2023</p>
+                    </div>
+                  </div>
                 </a>
-                <div class="role">
-                  <p class="role-title">Software Engineer</p>
-                  <p class="date"> April 2022 - July 2023</p>
-                </div>
-              </li>
-              <li class="job">
                 <a href="https://www.lightpointft.com/" target="_blank">
-                  <h4>LightPoint Financial Technology</h4>
+                  <div class="card work-card">
+                    <img src="./images/company-logos/lightpoint.png" alt="LightPoint"></img>
+                    <div>
+                      <h5>Software Engineer & Dev Ops Team Lead</h5>
+                      <p class="sub-text">2019 - 2022</p>
+                    </div>
+                  </div>
                 </a>
-                <div class="role">
-                  <p class="role-title">Software Engineer | DevOps Team Lead</p>
-                  <p class="date"> Jan 2021 - April 2022</p>
-                </div>
-                <div class="role">
-                  <p class="role-title">Software Engineer</p>
-                  <p class="date"> Nov 2019 -  Jan 2021</p>
-                </div>
-              </li>
-              <li class="job">
                 <a href="https://www.linkedin.com/company/eikos-partners/about/" target="_blank">
-                  <h4>Eikos Partners</h4>
+                  <div class="card work-card">
+                    <img src="./images/company-logos/eikos-partners.png" alt="Eikos Partners"></img>
+                    <div>
+                      <h5>Software Developer</h5>
+                      <p class="sub-text">2018 - 2019</p>
+                    </div>
+                  </div>
                 </a>
-                <div class="role">
-                  <p class="role-title">Software Developer</p>
-                  <p class="date">Nov 2018 - Nov 2019</p>
+              </div>
+            </article>
+            <article>
+              <h3>Skills</h3>
+              <div class="card-container">
+                <div class="card skill-card">
+                  <h4>Javascript</h4>
                 </div>
-                <div class="role">
-                  <p class="role-title">Junior Software Developer</p>
-                  <p class="date"> Aug 2018 - Nov 2018</p>
+                <div class="card skill-card">
+                  <h4>React</h4>
                 </div>
-              </li>
-            </ul>
+                <div class="card skill-card">
+                  <h4>Typescript</h4>
+                </div>
+                <div class="card skill-card">
+                  <h4>GraphQL</h4>
+                </div>
+                <div class="card skill-card">
+                  <h4>Jest</h4>
+                </div>
+                <div class="card skill-card">
+                  <h4>Cypress</h4>
+                </div>
+                <div class="card skill-card">
+                  <h4>HTML</h4>
+                </div>
+                <div class="card skill-card">
+                  <h4>CSS</h4>
+                </div>
+                <div class="card skill-card">
+                  <h4>Ruby</h4>
+                </div>
+                <div class="card skill-card">
+                  <h4>Ruby on Rails</h4>
+                </div>
+              </div>
+            </article>
           </article>
         </section>
         <section id="project-info">
-          <article id="personal-projects">
-            <h3>Personal Projects</h3>
-            <ul class="fa-ul">
-              <li class="project">
-                <a class="header" href="https://johneckert.github.io/dm-screen" target="_blank">
-                  <span class="fa-li">
-                    <i class="fa-solid fa-chevron-right"></i>
-                  </span>
-                  <h4>DM Screen</h4>
+          <article class="page-card">
+            <article>
+              <h3>Personal Projects</h3>
+              <div class="card-container">
+                <a href="https://johneckert.github.io/dm-screen/" target="_blank">
+                  <div class="card project-card">
+                    <img src="./images/project-logos/dm-screen.png" alt="DM Screen"></img>
+                    <div class="text-area">
+                      <h4>Dungeon Master Screen</h4>
+                      <p class="sub-text">An online tool for running 5th Edition Dungeons & Dragons games.</p>
+                      <p class="sub-text">Built with React.</p>
+                    </div>
+                  </div>
                 </a>
-                <div class="description">
-                  <p>An online tool for running 5th Edition Dungeons & Dragons games. Built using React.</p>
-                  <a href="https://github.com/johneckert/dm-screen" class="repo" target="_blank">View on github</a>
-                </div>
-              </li>
-            </ul>
+              </div>
+            </article>
           </article>
         </section>
       </div>

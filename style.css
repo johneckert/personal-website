@@ -1,3 +1,9 @@
+/*
+font-family: 'Cabin', sans-serif;
+font-family: 'Shrikhand', serif;
+*/
+
+
 html, body {
   margin: 0;
   padding: 0;
@@ -25,33 +31,76 @@ svg {
 }
 
 h1 {
-  font-size: 5rem;
-  margin: 0;
-  padding: 0;
+  color: #FFF;
+  text-align: center;
   font-family: 'Shrikhand', serif;
+  font-size: 4.5rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  margin: 0;
 }
 
 h2 {
-  font-weight: 300;
-  font-size: 1.5rem;
-  font-family: 'Open Sans', sans-serif;
+  color: #FFF;
+  text-align: center;
+  font-family: 'Cabin', sans-serif;
+  font-size: 2.25rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
   margin: 0;
 }
 
 h3 {
-  font-size: 2.5rem;
+  color: #FFF;
   font-family: 'Shrikhand', serif;
-  margin: 0;
+  font-size: 2.5rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  text-align: center;
+  margin: 0 0 1.5rem 0;
 }
 
 h4 {
-  margin-bottom: 0;
+  color: #090909;
+  font-family: 'Cabin', sans-serif;
+  font-size: 1.5rem;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  margin: 0;
 }
 
 h5 {
-  color: #FFFFFF;
-  font-weight: 300;
-  font-size: 3rem;
+  color: #090909;
+  text-align: center;
+  font-family: 'Cabin', sans-serif;
+  font-size: 1.5rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  margin: 0;
+}
+
+p {
+  color: #FFF;
+  font-family: 'Cabin', sans-serif;
+  font-size: 1.5rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+p.sub-text {
+  color: #707070;
+  text-align: center;
+  font-family: 'Cabin', sans-serif;
+  font-size: 0.875rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
 }
 
 a {
@@ -59,7 +108,7 @@ a {
   text-decoration: none;
 }
 
-a:hover, a:hover * {
+#links a:hover, #links a:hover * {
   color: rgb(54, 197, 240);
 }
 
@@ -76,34 +125,6 @@ a:hover, a:hover * {
   font-size: 1.8em;
 }
 
-.full-screen {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  align-self: normal;
-  height: 100vh;
-}
-
-.half-screen-v {
-  position: relative;
-  width: 50%;
-  align-self: normal;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
-.half-screen-h {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-  height: 50vh;
-}
-
 #content {
   position: relative;
   height: 100vh;
@@ -118,279 +139,163 @@ section {
   width: 100%;
   height: 100%;
   margin-bottom: 50%;
+  padding: 2.5rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  font-family: 'Raleway', sans-serif;
-  font-weight: 100;
   -webkit-scroll-snap-align: start;
   scroll-snap-align: start;
-  color: #FFFFFF;
 }
 
-section#bio {
+article.page-card {
+  width: 75rem;
+  flex-shrink: 0;
+  border-radius: 1rem;
+  background: rgba(9, 9, 9, 0.80);
+  padding: 2.5rem;
+}
+
+article.page-card > article:nth-child(2) {
+  margin-top: 3rem;
+}
+
+#bio article.page-card article {
+  display: flex;
   flex-direction: row;
-  justify-content: space-around;
 }
 
-section#work {
-  justify-content: space-around;
+#bio #head-shot {
+  width: 44rem;
+  height: 44rem;
+  flex-shrink: 0;
+  border-radius: 1rem;
+  margin-right: 2.5rem;
+  background: url(./images/glamour-shot.jpg), lightgray 50%;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
-section#project-info {
-  margin-bottom: 5rem;
+#bio #about-text {
+  width: 23.5rem;
+  padding-top: 2.5rem;
 }
 
-article#headshot {
-  width: 25vw;
-  margin-left: 12%;
+#bio #about-text h3 {
+  text-align: left;
 }
 
-article#headshot::before {
-  position: absolute;
-  content: '';
-  border: solid 10px #565656;
-  width: 25vw;
-  height: 25vw;
-  z-index: -1;
-  transform: translate(-20%, 15%);
-}
-
-article#headshot img {
-  width: 100%;
-}
-
-article#about {
-  padding: 2rem 8rem;
-  background-color: rgba(86,86,86,1); 
-  clip-path: polygon(8% 0, 100% 0, 92% 100%, 0 100%);
-  margin-right: 8%;
-  width: 30%;
-}
-
-article#about h2 {
-  text-align: center;
-}
-
-article#skills {
-  margin-top: 10rem;
+.card-container {
   width: 100%;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
-  background-color: rgba(86,86,86,1); 
-}
-
-article#skills ul {
+  justify-content: center;
+  padding: 1.5rem 3rem;
+  flex-wrap: wrap;
   padding: 0;
-}
-
-article#skills ul li {
-  display: inline;
-  padding: 1rem;
-}
-
-article#skills ul li:not(:first-child)::before {
-  font-family: "Font Awesome 5 Free";
-  content: "\f0e7";
-  display: inline-block;
-  padding-right: 1rem;
-  vertical-align: middle;
-  font-weight: 900;
-}
-
-
-article#job-info {
-  margin-bottom: 5rem;
-  padding: 4rem;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 100%;
-  background-color: rgba(86,86,86,1); 
-  clip-path: polygon(0 20%, 100% 0, 100% 80%, 0 100%);
-
-}
-
-article#job-info > ul {
-  list-style: none;
-  padding: 0;
-}
-
-article#personal-projects .project, article#job-info .job {
-  margin-bottom: 20px;
-}
-
-article#personal-projects .project p, article#job-info .job p {
   margin: 0;
-  font-weight: 300;
 }
 
-article#personal-projects .project h4, article#job-info .job h4 {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  padding-bottom: 0.3rem;
-  margin-top: 0;
-}
-
-article#job-info .role {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  padding-bottom: 0.6rem;
-}
-
-article#job-info .role-title {
-  font-weight: 100;
-  font-style: italic;
-  width: 50%;
-}
-
-article#job-info .date {
-  font-weight: 100;
-  width: 50%;
-  text-align: end;
-}
-
-article#personal-projects {
+.card {
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
-  width: 100%;
-  padding: 6rem 0;
-  background-color: rgba(86,86,86,1); 
-  clip-path: polygon(0 0, 100% 20%, 100% 100%, 0 80%);
+  gap: 1rem;
+  flex-shrink: 0;
+  border-radius: 1rem;
+  background: #FFF;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.10);
+  margin: 0 1rem 1rem 0;
 }
 
-article#personal-projects > ul {
-  padding: 0;
+.skill-card {
+  color: #090909;
+  text-align: center;
+  font-family: 'Cabin', sans-serif;
+  font-size: 1.5rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  padding: 1.5rem 0;
+  width: 10.625rem;
+  align-items: center;
 }
 
-article#personal-projects .project .header {
-  display: flex;
+.work-card {
+  padding: 2.5rem 4rem 2rem 4rem;
+  justify-content: space-between;
+  width: 14.5rem;
+  height: 15.1875rem;
+}
+
+.work-card h5 {
+  text-align: center;
+  max-width: 14rem;
+}
+
+.work-card img {
+  width: 14.375rem;
+  height: 4.52rem;
+  object-fit: contain;
+  align-content: center;
+}
+
+.project-card {
+  width: 34rem;
   flex-direction: row;
+  justify-content: space-between;
 }
 
-article#personal-projects .project .header img {
-  width: 3rem;
-  height: 3rem;
-  margin-right: 1rem;
+.project-card img {
+  width: 11.375rem;
+  margin: 1.5rem;
 }
 
-article#personal-projects .project p {
-  padding-bottom: 0.5rem;
+.project-card .text-area {
+  display: flex;
+  flex-direction: column;
+  margin-right: 2rem; 
 }
 
-article#personal-projects .project .description a {
-  text-decoration: underline;
+.project-card .text-area .sub-text {
+  align-self: stretch;
+  color: #090909;
+  font-family: Cabin;
+  font-size: 1rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  text-align: left;
 }
 
 @media only screen and (max-width: 1000px) {
-  html, body, section, article {
-    overflow-x: hidden;
-    font-size: 24px;
+  #links {
+    top: 2%;
   }
 
-  h4 {
-    font-size: 1.3rem;
+  section {
+    width: 100vw;
+    padding: 0;
   }
 
-  p {
-    font-size: 1rem;
+  article.page-card {
+    width: 80%;
+    margin-top: 1.5rem;
   }
 
-
-  article#hero {
-    margin-top: -70%;
-  }
-
-  section#bio {
+  #bio article.page-card article {
     flex-direction: column;
-    justify-content: flex-start;
     align-items: center;
   }
 
-  section#work {
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
-  }
-
-  article#headshot {
-    width: 40vw;
-    margin-left: 0;
-    margin-top: 20%;
-  }
-
-  
-  article#headshot::before {
-    width: 40vw;
-    height: 40vw;
-    z-index: -1;
-    transform: translate(-20%, 15%);
-  }
-  
-  article#about {
-    width: 80%;
-    margin: 20% 0;
-    padding: 2rem 20%;
-    background-color: rgba(86,86,86,1); 
-    clip-path: polygon(0 0, 100% 0%, 100% 100%, 0 100%);
-  }
-
-  article#skills {
-    width: 80%;
-    margin-top: 20%;
-    padding: 2rem 20%;
-    background-color: rgba(86,86,86,1); 
-    clip-path: polygon(0 0, 100% 0%, 100% 100%, 0 100%);
-    align-items: center;
-  }
-
-  article#skills ul li {
-    display: inline-block;
-    padding: 1rem;
-  }
-
-  article#skills ul li::before {
-    font-family: "Font Awesome 5 Free";
-    content: "\f0e7";
-    display: inline-block;
-    padding-right: 1rem;
-    vertical-align: middle;
-    font-weight: 900;
-  }
-
-  article#job-info {
-    width: 80%;
-    margin: 10% 0;
-    padding: 2rem 20%;
-    background-color: rgba(86,86,86,1); 
-    clip-path: polygon(0 0, 100% 0%, 100% 100%, 0 100%);
-  }
-
-  article#job-info > p {
-    font-size: 1.3rem;
-  }
-
-  section#project-info {
-    justify-content: flex-start;
+  #bio #head-shot {
     width: 100%;
-    padding-top: 25%;
-    font-size: 1rem;
+    margin-right: 0;
   }
 
-  article#personal-projects {
-    width: 80%;
-    margin: 0;
-    padding: 2rem 20%;
-    font-weight: 100;
-    background-color: rgba(86,86,86,1); 
-    clip-path: polygon(0 0, 100% 0%, 100% 100%, 0 100%);
-  }
-  article#personal-projects .project p {
-    font-weight: 100;
+  #bio #about-text {
+    width: 100%;
   }
 }
