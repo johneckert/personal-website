@@ -128,7 +128,7 @@ a {
 #content {
   position: relative;
   height: 100vh;
-  width: 100vw;
+  width: 100%;
   overflow-y: scroll;
   overflow-x: hidden;
   z-index: 900;
@@ -293,9 +293,14 @@ article.page-card > article:nth-child(2) {
   }
 }
 
-@media only screen and (max-width: 915px) {
+@media only screen and (max-width: 985px) {
   #links {
     top: 2%;
+  }
+
+  #links > a {
+    margin-left: 48px;
+    font-size: 5rem;
   }
 
   section {
@@ -309,6 +314,7 @@ article.page-card > article:nth-child(2) {
   }
 
   #bio article.page-card article {
+    display: flex;
     flex-direction: column;
     align-items: center;
   }
