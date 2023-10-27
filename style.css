@@ -129,7 +129,8 @@ a {
   position: relative;
   height: 100vh;
   width: 100vw;
-  overflow: scroll;
+  overflow-y: scroll;
+  overflow-x: hidden;
   z-index: 900;
   -webkit-scroll-snap-type: y mandatory;
   scroll-snap-type: y mandatory;
@@ -270,6 +271,28 @@ article.page-card > article:nth-child(2) {
   text-align: left;
 }
 
+@media only screen and (max-width: 1200px) {
+  article article {
+    width: calc(100% - 5rem);
+    margin: 0;
+  }
+
+  article.page-card {
+    width: 100%;;
+  }
+  .card-container {
+    align-items: center;
+    justify-content: center;
+  }
+
+  .work-card {
+    padding: 2.5rem 2rem 2rem 2rem;
+    justify-content: space-between;
+    width: 14.5rem;
+    height: 15.1875rem;
+  }
+}
+
 @media only screen and (max-width: 1000px) {
   #links {
     top: 2%;
@@ -296,6 +319,14 @@ article.page-card > article:nth-child(2) {
   }
 
   #bio #about-text {
+    width: 100%;
+  }
+
+  article article {
+    width: 100%;
+  }
+
+  .card-container {
     width: 100%;
   }
 }
