@@ -112,6 +112,10 @@ a {
   color: rgb(54, 197, 240);
 }
 
+#mobile-links {
+  display: none;
+}
+
 #links {
   color: #FFFFFF;
   z-index: 1000;
@@ -121,6 +125,11 @@ a {
 }
 
 #links > a {
+  margin-left: 24px;
+  font-size: 1.8em;
+}
+
+#mobile-links > a {
   margin-left: 24px;
   font-size: 1.8em;
 }
@@ -147,6 +156,14 @@ section {
   align-items: center;
   -webkit-scroll-snap-align: start;
   scroll-snap-align: start;
+}
+
+#title {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 article.page-card {
@@ -272,13 +289,37 @@ article.page-card > article:nth-child(2) {
 }
 
 @media only screen and (max-width: 1200px) {
+  h3 {
+    margin: 0 0 0.5rem 0;
+  }
+  p {
+    font-size: 1rem;
+    margin-top: 0.5rem;
+  }
+
+  #mobile-links {
+    display: block;
+    position: absolute;
+    top: 2%;
+    right: 5%;
+  }
+
+  #links {
+    display: none;
+  }
+
+  #links > a {
+    margin-left: 48px;
+    font-size: 3rem;
+  }
+
   article article {
     width: calc(100% - 5rem);
     margin: 0;
   }
 
   article.page-card {
-    width: 100%;;
+    width: 100%;
   }
   .card-container {
     align-items: center;
@@ -294,18 +335,38 @@ article.page-card > article:nth-child(2) {
 }
 
 @media only screen and (max-width: 985px) {
-  #links {
+  h3 {
+    margin: 0 0 0.5rem 0;
+  }
+  p {
+    font-size: 1rem;
+    margin-top: 0.5rem;
+  }
+
+  #mobile-links {
+    display: block;
+    position: absolute;
     top: 2%;
+    right: 5%;
+  }
+
+  #links {
+    display: none;
   }
 
   #links > a {
     margin-left: 48px;
-    font-size: 5rem;
+    font-size: 3rem;
   }
 
   section {
     width: 100vw;
-    padding: 0;
+    height: fit-content;
+    padding-left: 0;
+    padding-right: 0;
+    /* padding-bottom: 120vh; */
+    -webkit-scroll-snap-align: unset;
+    scroll-snap-align: unset;
   }
 
   article.page-card {
@@ -321,10 +382,13 @@ article.page-card > article:nth-child(2) {
 
   #bio #head-shot {
     width: 100%;
+    height: 80vw;
     margin-right: 0;
+    background-size: contain;
   }
 
   #bio #about-text {
+    padding-top: 0.5rem;
     width: 100%;
   }
 
@@ -334,5 +398,24 @@ article.page-card > article:nth-child(2) {
 
   .card-container {
     width: 100%;
+  }
+
+  .work-card {
+    height: 10rem;
+    margin: 0 0 1rem 0;
+  }
+
+  .project-card {
+    flex-direction: column;
+    padding: 2.5rem 2rem 2rem 2rem;
+    width: 14.5rem;
+  }
+
+  .project-card img {
+    width: 10rem;
+  }
+
+  .project-card .text-area {
+    margin-right: 0;
   }
 }
