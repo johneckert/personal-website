@@ -1,5 +1,5 @@
 let blobs = [];
-let svg, blobGradient, width, height;
+let width, height;
 
 let isMobile = /Mobi|Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
 let isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
@@ -14,98 +14,94 @@ if (isMobile || isSafari) {
 
 function setup() {
   pixelDensity(1);
-  createCanvas(width,height);
-  
-  svg = SVG().addTo('#lava-lamp').size(width, height);
-  
-  blobGradient = svg.gradient('radial', function(add) {
-    add.stop(0, '#FFFFFF')
-    add.stop(0.1, '#c536F0')
-    add.stop(0.4, '#a12bc4')
-    add.stop(0.8, '#772091')
-    add.stop(1, '#2b0a3d')
-  });
-  
-  let group = makeFilter();
+  createCanvas(width, height);
+  frameRate(32);
 
-  for (let i = 0; i < Math.ceil(height / 20); i++) {
-    blobs.push(new Goop(group));
+  for (let i = 0; i < Math.ceil(height / 20); i++) { /*Math.ceil(height / 20)*/
+    blobs.push(new Blob());
   }
-}
-function makeFilter() {
-  let filter = svg.element('filter').attr('id', 'goo');
-  
-  filter.add(svg.element('feGaussianBlur').attr({
-    in: "SourceGraphic", 
-    stdDeviation: 10,
-    result: "background-blur",
-  }));
-
-  filter.add(svg.element('feColorMatrix').attr({
-    in: "background-blur",
-    type: "matrix",
-    values: "1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 20 -5",
-    result: "goo",
-  }));
-  
-  return svg.group().attr('filter', 'url(#goo)');
 }
 
 function draw() {
-  for (let blob of blobs) blob.update();
+  background(50, 89, 100);
+  for (let i = 0; i < blobs.length; i++) {
+    let gravity = createVector(0, 0.1 * blobs[i].mass);
+    blobs[i].applyForce(gravity);
+    blobs[i].move();
+    blobs[i].display();
+    blobs[i].bounce();
+    blobs[i].wibble();
+    blobs[i].updateGradient();
+  }
 }
 
-class Goop {
-  constructor(group) {
-    this.position = createVector(random(width), floor(random(height)));
+class Blob {
+  constructor() {
+    this.diameterX = random(50, 200);
+    this.diameterY = this.diameterX;
+    this.diameter = (this.diameterX + this.diameterY) / 2;
+    this.wobble = random(1);
+
+    this.mass = this.diameter * 0.1;
+    this.position = createVector(random(width), random(height));
     this.velocity = createVector(0, 0);
-    
-    this.initialSize = random(50, 200);
-    this.wobble = random(1000);
-    
-    this.element = svg
-      .ellipse(this.initialSize, this.initialSize)
-      .center(this.position.x, this.position.y)
-      .fill(blobGradient);
-    group.add(this.element);
+    this.acceleration = createVector(0, 0);
+    this.gravityCenter = createVector(this.position.x, this.position.y * -1); // Center of gravity
+
+    this.updateGradient();
   }
-  
-  update() {
-    let scale = 0.2;
-    let sizeX = (1 + sin(this.wobble) * scale) * this.initialSize;
-    let sizeY = (1 + sin(this.wobble + PI) * scale) * this.initialSize;
-    
-    let acceleration = createVector(0, map(this.position.y, 0, height, 1, -1) * 0.1 / this.initialSize);
-    this.velocity.add(acceleration);
-    this.velocity.limit(0.5);
-    this.position.add(this.velocity);
-    
-    // update wobble based on magnitude of velocity
+
+  updateGradient() {
+    this.gradient = drawingContext.createRadialGradient(this.position.x -20, this.position.y - 20, 0, this.position.x, this.position.y, this.diameter);
+    this.gradient.addColorStop(0, color('#FFFFFF'))
+    this.gradient.addColorStop(0.1, color('#c536F0'))
+    this.gradient.addColorStop(0.2, color('#a12bc4'))
+    this.gradient.addColorStop(0.4, color('#772091'))
+    this.gradient.addColorStop(0.6, color('#2b0a3d'))
+    drawingContext.filter = 'blur(10px) matrix(1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 20 -5)';
+  }
+
+
+
+  // Newton's 2nd law: F = M * A
+  applyForce(force) {
+    let f = force.copy();
+    f.div(this.mass);
+    this.acceleration.add(f);
+  }
+  // Reverse direction of acceleration if blob hits the edge of the canvas
+  bounce() {
+    if (this.position.y > height - this.mass * 8) {
+      this.gravityCenter = createVector(this.position.x, 0);
+    }
+
+    if (this.position.y < this.mass * 8) {
+      this.gravityCenter = createVector(this.position.x, height);
+    }
+  };
+
+  wibble() {
+    // this.diameter += sin(this.wobble);
+    this.diameterX *= (1 + sin(this.wobble) * 0.005);
+    this.diameterY *= (1 + sin(this.wobble + PI) * 0.005);
     this.wobble += abs(this.velocity.mag()) * 0.05 + 0.005;
-    
-    this.element
-      .size(sizeX, sizeY)
-      .center(this.position.x, this.position.y);
+  }
+
+  move() {
+    this.gravityForce = p5.Vector.sub(this.gravityCenter, this.position);
+    this.acceleration.add(this.gravityForce);
+    this.velocity.add(this.acceleration); // Velocity changes according to acceleration
+    this.velocity.limit(1);
+    this.position.add(this.velocity);
+
+    // We must clear acceleration each frame
+    this.acceleration.mult(0);
+  }
+
+  display() {
+    strokeWeight(0);
+    drawingContext.fillStyle = this.gradient;
+    this.updateGradient();
+    ellipse(this.position.x, this.position.y, this.diameterX, this.diameterY);
   }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
