@@ -1,5 +1,6 @@
 let blobs = [];
 let width, height;
+let backgroundGradient;
 
 let isMobile = /Mobi|Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
 let isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
@@ -17,13 +18,20 @@ function setup() {
   createCanvas(width, height);
   frameRate(32);
 
-  for (let i = 0; i < Math.ceil(height / 20); i++) { /*Math.ceil(height / 20)*/
+  // Create gradient
+  backgroundGradient = drawingContext.createLinearGradient(0, 0, width, height);
+  backgroundGradient.addColorStop(0.3, color(55, 213, 214))
+  backgroundGradient.addColorStop(0.8, color(0,151,151))
+
+  for (let i = 0; i < Math.ceil(height / 20); i++) {
     blobs.push(new Blob());
   }
 }
 
 function draw() {
   background(50, 89, 100);
+  drawingContext.fillStyle = backgroundGradient;
+  drawingContext.fillRect(0, 0, width, height);
   for (let i = 0; i < blobs.length; i++) {
     let gravity = createVector(0, 0.1 * blobs[i].mass);
     blobs[i].applyForce(gravity);
@@ -52,13 +60,11 @@ class Blob {
   }
 
   updateGradient() {
-    this.gradient = drawingContext.createRadialGradient(this.position.x -20, this.position.y - 20, 0, this.position.x, this.position.y, this.diameter);
-    this.gradient.addColorStop(0, color('#FFFFFF'))
-    this.gradient.addColorStop(0.1, color('#c536F0'))
+    this.gradient = drawingContext.createRadialGradient(this.position.x -40, this.position.y- 30, 0, this.position.x, this.position.y, this.diameter);
+    this.gradient.addColorStop(0, color('#c536F0'))
     this.gradient.addColorStop(0.2, color('#a12bc4'))
     this.gradient.addColorStop(0.4, color('#772091'))
-    this.gradient.addColorStop(0.6, color('#2b0a3d'))
-    drawingContext.filter = 'blur(10px) matrix(1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 20 -5)';
+    this.gradient.addColorStop(0.8, color('#2b0a3d'))
   }
 
 
@@ -91,7 +97,7 @@ class Blob {
     this.gravityForce = p5.Vector.sub(this.gravityCenter, this.position);
     this.acceleration.add(this.gravityForce);
     this.velocity.add(this.acceleration); // Velocity changes according to acceleration
-    this.velocity.limit(1);
+    this.velocity.limit(0.5);
     this.position.add(this.velocity);
 
     // We must clear acceleration each frame
