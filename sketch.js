@@ -13,6 +13,9 @@ if (isMobile || isSafari) {
   height = window.innerHeight;
 }
 
+let numberOfBlobs = Math.ceil(isMobile ? height / 40 : height / 20);
+console.log(isMobile, numberOfBlobs);
+
 function setup() {
   pixelDensity(1);
   createCanvas(width, height);
@@ -22,7 +25,7 @@ function setup() {
   backgroundGradient.addColorStop(0.3, color(55, 213, 214))
   backgroundGradient.addColorStop(0.8, color(0,151,151))
 
-  for (let i = 0; i < Math.ceil(height / 20); i++) {
+  for (let i = 0; i < numberOfBlobs; i++) {
     blobs.push(new Blob());
   }
 }
