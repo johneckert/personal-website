@@ -14,13 +14,12 @@ if (isMobile || isSafari) {
 }
 
 let numberOfBlobs = Math.ceil(isMobile ? height / 40 : height / 20);
-console.log(isMobile, numberOfBlobs);
 
 function setup() {
   pixelDensity(1);
   createCanvas(width, height);
   frameRate(32);
-
+  describe('purple blobs floatin in space against a blue background', LABEL);
   backgroundGradient = drawingContext.createLinearGradient(0, 0, width, height);
   backgroundGradient.addColorStop(0.3, color(55, 213, 214))
   backgroundGradient.addColorStop(0.8, color(0,151,151))
