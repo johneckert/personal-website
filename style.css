@@ -251,6 +251,7 @@ article.page-card > article:nth-child(2) {
 
 .project-card {
   width: 34rem;
+  min-height: 15rem;
   flex-direction: row;
   justify-content: space-between;
 }
