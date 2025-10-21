@@ -16,7 +16,7 @@
     <script src="https://kit.fontawesome.com/940f4d9432.js" crossorigin="anonymous"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Honk&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Next:ital,wght@0,200..800;1,200..800&display=swap" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="style.css">
     <meta charset="utf-8" />
 
@@ -24,9 +24,13 @@
     <link rel="icon" type="image/x-icon" href="images/j.ico" />
   </head>
   <body>
-    <div class="name-container">
-      <h1>John Eckert</h1>
+    <div class="button-container">
+      <button onclick="switchSketch('CONCENTRIC_DRIFT')">Concentric Drift</button>
+      <button onclick="switchSketch('CHROMATIC_BLOOM')">Chromatic Bloom</button>
     </div>
-    <script src="sketch.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.6.0/p5.js"></script>
+    <script src="main.js"></script>
+    <script src="/sketches/concentricDrift.js"></script>
+    <script src="/sketches/chromaticBloom.js"></script>
   </body>
 </html>
